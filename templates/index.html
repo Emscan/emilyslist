@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block body %}
+{% for cat in categories %}
+	<p><a href="/categories/{{cat.name}}">{{cat.name}}</a></p>
+{% endfor %}
+
+
+{% endblock %}

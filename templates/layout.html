@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="/assets/main.js"></script>
+	</head>
+	<body>
+		<h1>Emily's List</h1>
+		<p><form action="/search" method="POST">
+				<input type="text" name="search" value="{{request.form.search}}" />
+				<button type="submit">SEARCH</button>
+			</form>
+		</p>
+		{% block body %}{% endblock %}
+	</body>
+</html>	
