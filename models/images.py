@@ -3,7 +3,7 @@ from db import db
 class Image(db.Model):
 	__tablename__ = 'images'
 	id = db.Column(db.Integer, primary_key=True)
-	listing_id = db.relationship('Listing', backref='image')
+	listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
 	filename = db.Column(db.String(255))
 
 	@classmethod

@@ -1,8 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
-	<form action="/listings" method="POST" enctype="multipart/form-data">
-		<input type="text" name="text" />
-		<input name="file" type="file" multiple="multiple" />
-		<button type="submit">Submit File</button>
-	</form>
+<h1>Listings</h1>
+	{% for listing in listings %}
+		{% if listing.images %}
+			<img src="/uploads/{{listing.images[0].filename}}" height="100" width="100">
+		{% endif %}
+	 	<p><a href="/listings/{{listing.id}}">{{listing.title}}: {{listing.body}}</a></p>
+	{% endfor %}
 {% endblock %}

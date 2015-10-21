@@ -16,7 +16,7 @@ def search_results():
 
 
 application.register_blueprint(listings.listings, session=session, g=g)
-
+application.register_blueprint(categories.cat, session=session, g=g)
 
 if __name__ == '__main__':
 	application.run()

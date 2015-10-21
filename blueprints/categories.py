@@ -5,10 +5,10 @@ from flask_mail import Message, Mail
 app = Flask(__name__)
 app.config.from_object('config')
 
-cat = Blueprint('category', __name__)
+cat = Blueprint('cat', __name__)
 
 
-@cat.route('/categories', methods='GET', 'POST')
+@cat.route('/categories', methods=['GET', 'POST'])
 def categories():
 	if request.method == 'GET':
 		return render_template('categories.html', categories=Category.query.all())
@@ -20,7 +20,7 @@ def category(catname):
 	category = Category.query.filter(Category.name==catname).first()
 	return render_template('category.html', category=category)
 
-@cat.route('/search', methods=['GET', 'POST'])
+'''@cat.route('/search', methods=['GET', 'POST'])
 def search():
 	if request.method == 'GET':
 		return render_template('search_results.html')
@@ -28,7 +28,7 @@ def search():
 		db = db
 		search = Category.query.filter(db.text(name like "%s"))
 		db.cursor().executemany('select * from db where name like %s', request.form['search'])
-		return redirect('/search_results')
+		return redirect('/search_results')'''
 
 
 

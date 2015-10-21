@@ -1,16 +1,10 @@
-<!--{% for post in category.posts %}
-{% endfor %}-->
 {% extends "layout.html" %}
 {% block body %}
 
-<h2>Create Listing</h2>
-	<form action="/create_listing" method="POST" id="create">
+<h2>Edit Listing</h2>
+	<form action="/edit_listing" method="POST" id="create">
 		Email: <input name="email" type="email" />
-		<p>Choose a category: <select name="category_id">
-								{% for cat in categories %}
-									<option value="{{ category.id }}">
-								{% endfor %}
-								</select></p>
+		<p>Category: {{category_name}}
 		<textarea name="title" placeholder="please enter a title">
 		</textarea>
 		<textarea name="price" placeholder="price:">
@@ -18,6 +12,10 @@
 		<textarea name="body" placeholder="listing content...">
 		</textarea>
 		<input name="file" type="file" multiple="multiple" />
-		<button type="submit">Create Listing</button>
+		<button type="submit">Submit Edited Listing</button>
+	</form>
+	<form action="/listing/delete/{{listing.id}}">
+		<input name="listing_id" type="hidden" value="listing.id" />
+		<p><button type="submit">DELETE Listing</button>
 	</form>
 {% endblock %}

@@ -4,11 +4,10 @@ class Listing(db.Model):
 	__tablename__ = 'listings'
 	id = db.Column(db.Integer, primary_key=True)
 	cat_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
-	email = db.Columm(db.String(255), nullable=False)
+	email = db.Column(db.String(255), nullable=False)
 	price = db.Column(db.Integer, nullable=False)
 	title = db.Column(db.String(100), index=True, nullable=False)
-	body = db.Column(db.Text(length=10000), index=True, nullable=False)
-	filename = db.Column(db.String(255), db.ForeignKey('images.filename'))
+	body = db.Column(db.Text(length=10000), nullable=False)
 	images = db.relationship('Image', backref='listing')
 	token = db.Column(db.String(255), nullable=False)
 
@@ -23,6 +22,15 @@ class Listing(db.Model):
 		except:
 			db.session.rollback()
 
+	def delete(self):
+		try:
+			db.session.delete(self)
+			for image in self.images:
+				db.session.delete(image)
+			db.session.commit()
+		except:
+			db.session.rollback()
+
 	@classmethod
 	def create(cls, *args, **kwargs):
 		try:
@@ -32,4 +40,3 @@ class Listing(db.Model):
 		except:
 			db.session.rollback()
 		return listing
-		

@@ -6,11 +6,23 @@
 	</head>
 	<body>
 		<h1>Emily's List</h1>
-		<p><form action="/search" method="POST">
-				<input type="text" name="search" value="{{request.form.search}}" />
-				<button type="submit">SEARCH</button>
+		{% with messages = get_flashed_messages() %}
+		{% for message in messages %}
+			<p id="flash" color="red">{{message}}</p>
+		{% endfor %}
+		<p><form action="/search" method="GET">
+				<input id="search" type="text" name="search" value="{{request.form.search}}" />
+				<button id="search" type="submit">SEARCH</button>
 			</form>
 		</p>
+		<div class="nav">
+			<h2>
+				<a href="/categories">Categories</a>
+				<a href="/listings">Listings</a>
+				<a href="/create">Create a new Listing</a>
+			</h2>
+		</div>
 		{% block body %}{% endblock %}
+		{% endwith %}
 	</body>
 </html>	
