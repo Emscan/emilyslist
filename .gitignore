@@ -1,6 +1,7 @@
 *.pyc
 config.py
 virt/*
+uploads/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

@@ -1,12 +1,15 @@
 from flask import Flask, Blueprint, request, session, render_template, send_from_directory
 from werkzeug import secure_filename
-import os
+import os, random, string
 from flask_mail import Message, Mail
+from flask_s3 import FlaskS3
+from boto_conn import bucket
 
 app = Flask(__name__)
 app.config.from_object('config')
 
 mail = Mail(app)
+#s3 = FlaskS3(app)
 
 listings = Blueprint('listings', __name__)
 
@@ -47,9 +50,13 @@ def create():
 		if title and body and email and price:
 			listing = Listing.create(cat_id=cat_id, title=title, body=body, email=email, price=price, token=token)
 			for img_file in request.files.getlist('file[]'):
-				filename = secure_filename(img_file.filename)
+				if img_file:
+					filename = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(26)) + ".jpeg"
 				if filename:
-					img_file.save(os.path.join(app.config['uploads'], filename))
+					#img_file.save(os.path.join(app.config['uploads'], filename))
+					key = bucket.new_key(filename)
+					key.set_contents_from_string(img_file.read())
+					key.set_canned_acl('public-read')
 					image = Image.create(filename=filename, listing_id=listing.id)
 			link = 'http://localhost:5000/edit/{1}?token={0}'.format(token, listing.id)
 			msg = Message('Edit listing email address', sender='emscancode@gmail.com', recipients=[email])
@@ -91,9 +98,14 @@ def edit(listing_id):
 				filename = secure_filename(img_file.filename)
 				img_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 				image = Image.create(filename=filename, listing_id=listing.id)
+			if filename:
+				key = bucket.new_key(filename)
+				key.set_contents_from_string(img_file.read())
+				key.set_canned_acl('public-read')
+				image = Image.create(filename=filename, listing_id=listing.id)
 			listing.update(title=title, body=body, email=email, price=price, filename=filename)
 			flash('update successful')
-			return redirect
+			return redirect('/listings')
 
 @listings.route('/listings/<path:listing_id>')
 def listing(listing_id):

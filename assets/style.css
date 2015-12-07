@@ -1,0 +1,14 @@
+* {
+	font-family: Helvetica;
+
+}
+
+h1 {
+	font-family: Impact;
+	text-align: center;
+
+}
+
+.nav {
+	display: inline;
+}

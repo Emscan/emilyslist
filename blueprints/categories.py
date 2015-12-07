@@ -7,6 +7,7 @@ app.config.from_object('config')
 
 cat = Blueprint('cat', __name__)
 
+mail = Mail(app)
 
 @cat.route('/categories', methods=['GET', 'POST'])
 def categories():
@@ -20,19 +21,8 @@ def category(catname):
 	category = Category.query.filter(Category.name==catname).first()
 	return render_template('category.html', category=category)
 
-'''@cat.route('/search', methods=['GET', 'POST'])
+@cat.route('/search')
 def search():
-	if request.method == 'GET':
-		return render_template('search_results.html')
-	if request.method == 'POST':
-		db = db
-		search = Category.query.filter(db.text(name like "%s"))
-		db.cursor().executemany('select * from db where name like %s', request.form['search'])
-		return redirect('/search_results')'''
-
-
-
-
-
-
-
+	query = request.args.get('query')
+	listings = Listing.querydb(query)
+	return render_template('search.html', listings=listings)

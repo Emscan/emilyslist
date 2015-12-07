@@ -2,20 +2,21 @@
 {% block body %}
 
 <h2>Edit Listing</h2>
-	<form action="/edit_listing" method="POST" id="create">
+	<form action="/edit_listing/{{listing.id}}" method="POST" id="edit" enctype="multipart/form-data">
 		Email: <input name="email" type="email" />
 		<p>Category: {{category_name}}
-		<textarea name="title" placeholder="please enter a title">
+		<textarea name="title" placeholder="please enter a title" rows="1" cols="30">{{listing.title}}
 		</textarea>
-		<textarea name="price" placeholder="price:">
+		<textarea name="price" placeholder="price:" rows="1" cols="15">{{listing.price}}
 		</textarea>
-		<textarea name="body" placeholder="listing content...">
+		<textarea name="body" placeholder="listing content..." rows="10" cols="50">{{listing.body}}
 		</textarea>
-		<input name="file" type="file" multiple="multiple" />
+		<input name="img_file" type="file" multiple />
+		<input name="listing_id" type="hidden" value="{{listing_id}}"
 		<button type="submit">Submit Edited Listing</button>
 	</form>
 	<form action="/listing/delete/{{listing.id}}">
-		<input name="listing_id" type="hidden" value="listing.id" />
+		<input name="listing_id" type="hidden" value="{{listing.id}}" />
 		<p><button type="submit">DELETE Listing</button>
 	</form>
 {% endblock %}

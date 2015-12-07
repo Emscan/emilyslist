@@ -4,9 +4,9 @@
 {% block body %}
 
 <h2>Create Listing</h2>
-	<form action="/create_listing" method="POST" id="create">
+	<form action="/create_listing" method="POST" enctype="multipart/form-data" id="create">
 		Email: <input name="email" type="email" />
-		<p>Choose a category: <select name="category_id">
+		<p>Choose a category: <select name="cat_id">
 								{% for cat in categories %}
 									<option value="{{ category.id }}">
 								{% endfor %}
@@ -17,7 +17,9 @@
 		</textarea>
 		<textarea name="body" placeholder="listing content...">
 		</textarea>
-		<input name="file" type="file" multiple="multiple" />
-		<button type="submit">Create Listing</button>
+		<div id="upload-photo">
+			<input name="file" type="file" multiple />
+		</div>
+		<p><button type="submit">Create Listing</button></p>
 	</form>
 {% endblock %}

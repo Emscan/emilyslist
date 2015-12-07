@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="/assets/style.css">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script type="text/javascript" src="/assets/main.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	</head>
 	<body>
-		<h1>Emily's List</h1>
-		{% with messages = get_flashed_messages() %}
-		{% for message in messages %}
-			<p id="flash" color="red">{{message}}</p>
-		{% endfor %}
-		<p><form action="/search" method="GET">
-				<input id="search" type="text" name="search" value="{{request.form.search}}" />
-				<button id="search" type="submit">SEARCH</button>
-			</form>
-		</p>
-		<div class="nav">
-			<h2>
-				<a href="/categories">Categories</a>
-				<a href="/listings">Listings</a>
-				<a href="/create">Create a new Listing</a>
-			</h2>
+		<div class="nav nav-navbar" style="background: aqua">
+			<h1>Emily's List</h1>
+			{% with messages = get_flashed_messages() %}
+			{% for message in messages %}
+				<p id="flash" color="red">{{message}}</p>
+			{% endfor %}
+			<p><form action="/search" method="GET">
+					<div class="input-group center-block" style="text-align: center">
+						<input id="search" type="text" placeholder="search..." />
+						<button id="search" type="submit">SEARCH</button>
+					</div>
+				</form>
+			</p>
+		</div>
+		<div class="container-fluid">
+		    <div id="sidebar" class="row">
+		        <div id="left-panel" class="col-xs-3 well  nav-sidebar">
+		            <ul class="nav nav-list">
+		                <li class="sidebar-brand"><a href="#">Emily'sList</a></li>
+		                <li class="btn btn-default"><a href="/categories">Categories</a></li>
+		                <li class="btn btn-default"><a href="/listings">Listings</a></li>
+		                <li class="btn btn-default"><a href="/create_listing">Create a New listing</a></li>
+		            </ul>
+		        </div>
+		    </div>
 		</div>
 		{% block body %}{% endblock %}
 		{% endwith %}
 	</body>
-</html>	
+</html>

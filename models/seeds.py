@@ -2,7 +2,7 @@ from db import db
 from categories import *
 
 CATEGORY_NAMES = ['Appliances', 
-				'Baby and Kid', 
+				'Baby and Child', 
 				'Bikes', 
 				'Camping and Outdoors', 
 				'Cars', 

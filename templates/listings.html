@@ -6,5 +6,6 @@
 			<img src="/uploads/{{listing.images[0].filename}}" height="100" width="100">
 		{% endif %}
 	 	<p><a href="/listings/{{listing.id}}">{{listing.title}}: {{listing.body}}</a></p>
+	 	<p>Reply to: {{listing.email}}</p>
 	{% endfor %}
 {% endblock %}

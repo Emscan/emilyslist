@@ -1,4 +1,11 @@
 {% extends "layout.html" %}
 {% block body %}
-	{{ search.results }}
+	{% for listing in listings %}
+		<h4>
+			{% if listing.images %}
+				<img src="{{config['S3_BUCKET_LINK']}}{{post.images[0].filename}}" height="100" width="100">
+			{% endif %}
+			<a href="/listings/{{listing.id}}">{{listing.title}}: {{listing.body}}</a></h4>
+ 			<p>Reply to: {{listing.email}}</p>
+ 	{% endfor %}
 {% endblock %}

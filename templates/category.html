@@ -3,6 +3,7 @@
 	<h2>{{category.name}}</h2>
 		{% for listing in category.listings %}
 			<h5><a href="/listings/{{listing.id}}">{{listing.title}}</a></h5>
+			<p>Reply email: {{listing.email}}</p>
 			<p>{{listing.body}}</p>
 		{% endfor %}
 {% endblock %}

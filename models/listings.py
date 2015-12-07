@@ -40,3 +40,7 @@ class Listing(db.Model):
 		except:
 			db.session.rollback()
 		return listing
+
+	@classmethod
+	def querydb(cls, query):
+		return db.session.query(cls).filter(cls.title.like(query))

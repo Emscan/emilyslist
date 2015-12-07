@@ -1,2 +1,2 @@
 import listings
-import categories
+from categories import cat
