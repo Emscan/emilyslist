@@ -2,7 +2,7 @@ from flask import Flask, render_template, session, g
 from models import *
 from blueprints import *
 
-application = Flask(__name__, static_url_path='/uploads')
+application = Flask(__name__, static_url_path='/static')
 application.config.from_object('config')
 
 @application.route('/')
