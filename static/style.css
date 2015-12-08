@@ -1,3 +1,7 @@
+html, body, .container-fluid, #left-panel> div {
+    height: 100%;
+}
+
 * {
 	font-family: Helvetica;
 
@@ -9,7 +13,18 @@ h1 {
 
 }
 
-.nav {
+.navbar {
 	display: inline;
 	font-family: Impact;
+}
+
+#main {
+	height: 100%;
+	background: gray;
+}
+
+#left-panel {
+	height: 100%;
+	background: black;
+	background-color: white; 
 }
