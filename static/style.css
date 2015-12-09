@@ -2,29 +2,39 @@ html, body, .container-fluid, #left-panel> div {
     height: 100%;
 }
 
+body {
+	background-image: url("/static/a025.jpg");
+	background-repeat: no-repeat; 
+	background-position: center;
+	background-size: cover; 
+}
+
 * {
 	font-family: Helvetica;
-
 }
 
 h1 {
 	font-family: Impact;
 	text-align: center;
+	background-color: black
 
-}
-
-.navbar {
-	display: inline;
-	font-family: Impact;
 }
 
 #main {
 	height: 100%;
 	background: gray;
+	opacity: 0.5;
+	font-weight: 
 }
 
 #left-panel {
 	height: 100%;
 	background: black;
-	background-color: white; 
+	background-color: white;
+	padding: 10px;
+	opacity: 0.75;
+}
+
+#inner-text {
+	opacity: 1;
 }

@@ -9,20 +9,18 @@
 	</head>
 	<body>
 		<div class="container-fluid">
-			<div id="nav" class="navbar navbar-inverse" style="background: black">
-				<h1><a href="#">Emily's List</a></h1>
-				{% with messages = get_flashed_messages() %}
-				{% for message in messages %}
-					<p id="flash" color="red">{{message}}</p>
-				{% endfor %}
-				<p><form action="/search" method="GET">
-						<div class="input-group center-block" style="text-align: center">
-							<input id="search" type="text" placeholder="search..." />
-							<button id="search" type="submit">SEARCH</button>
-						</div>
-					</form>
-				</p>
-			</div>
+			<h1><a href="#">Emily's List</a></h1>
+			{% with messages = get_flashed_messages() %}
+			{% for message in messages %}
+				<p id="flash" color="red">{{message}}</p>
+			{% endfor %}
+			<p><form action="/search" method="GET">
+					<div class="input-group center-block" style="text-align: center">
+						<input id="search" type="text" placeholder="search..." />
+						<button id="search" type="submit">SEARCH</button>
+					</div>
+				</form>
+			</p>
 	        <div id="left-panel" class="col-xs-3 well">
 	            <ul class="nav nav-list">
 	                <li class="btn btn-default"><a href="/categories">Categories</a></li>
@@ -30,11 +28,13 @@
 	                <li class="btn btn-default"><a href="/create_listing">Create a New listing</a></li>
 	            </ul>
 	        </div>
-	        <div class="jumbotron col-xs-8" id="main">
-		{% block body %}
-		{% endblock %}
+		    <div class="jumbotron col-xs-8" id="main">
+		    	<div id="inner-text">
+					{% block body %}
+					{% endblock %}
+				</div>
 			</div>
-		{% endwith %}
+			{% endwith %}
 		</div>
 	</body>
 </html>
