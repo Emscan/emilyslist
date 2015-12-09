@@ -1,5 +1,3 @@
-<!--{% for post in category.posts %}
-{% endfor %}-->
 {% extends "layout.html" %}
 {% block body %}
 
@@ -7,16 +5,13 @@
 	<form action="/create_listing" method="POST" enctype="multipart/form-data" id="create">
 		Email: <input name="email" type="email" />
 		<p>Choose a category: <select name="cat_id">
-								{% for cat in categories %}
-									<option value="{{ category.id }}">
+								{% for category in categories %}
+									<option value="{{ category.id }}">{{category.name}}</option>
 								{% endfor %}
 								</select></p>
-		<textarea name="title" placeholder="please enter a title">
-		</textarea>
-		<textarea name="price" placeholder="price:">
-		</textarea>
-		<textarea name="body" placeholder="listing content...">
-		</textarea>
+		<p><textarea name="title" placeholder="please enter a title" rows="1" cols="20"></textarea></p>
+		<p><textarea name="price" placeholder="price:" rows="1" cols="15"></textarea></p>
+		<p><textarea name="body" placeholder="listing content..." rows="10" cols="150"></textarea></p>
 		<div id="upload-photo">
 			<input name="file" type="file" multiple />
 		</div>

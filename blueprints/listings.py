@@ -1,7 +1,9 @@
-from flask import Flask, Blueprint, request, session, render_template, send_from_directory
-from werkzeug import secure_filename
+from flask import Flask, Blueprint, request, session, render_template, flash, redirect, send_from_directory
+from models import *
+import bcrypt
 import os, random, string
 from flask_mail import Message, Mail
+from werkzeug import secure_filename
 from flask_s3 import FlaskS3
 from boto_conn import bucket
 
@@ -44,7 +46,7 @@ def create():
 		title = request.form.get('title')
 		body = request.form.get('body')
 		email = request.form.get('email')
-		price = requst.form.get('price')
+		price = request.form.get('price')
 		filename = 'None'
 		token = bcrypt.gensalt()
 		if title and body and email and price:
@@ -66,7 +68,7 @@ def create():
 			return redirect('/')
 		else:
 			flash('Oops, something went wrong. Please create a valid listing.')
-			return render_template('create.html')
+			return render_template('create_listing.html')
 
 @listings.route('/listing/delete/<path:listing_id>')
 def delete(post_id):

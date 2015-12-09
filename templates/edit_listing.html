@@ -5,12 +5,9 @@
 	<form action="/edit_listing/{{listing.id}}" method="POST" id="edit" enctype="multipart/form-data">
 		Email: <input name="email" type="email" />
 		<p>Category: {{category_name}}
-		<textarea name="title" placeholder="please enter a title" rows="1" cols="30">{{listing.title}}
-		</textarea>
-		<textarea name="price" placeholder="price:" rows="1" cols="15">{{listing.price}}
-		</textarea>
-		<textarea name="body" placeholder="listing content..." rows="10" cols="50">{{listing.body}}
-		</textarea>
+		<textarea name="title" placeholder="please enter a title" rows="1" cols="30">{{listing.title}}</textarea>
+		<textarea name="price" placeholder="price:" rows="1" cols="15">{{listing.price}}</textarea>
+		<textarea name="body" placeholder="listing content..." rows="10" cols="50">{{listing.body}}</textarea>
 		<input name="img_file" type="file" multiple />
 		<input name="listing_id" type="hidden" value="{{listing_id}}"
 		<button type="submit">Submit Edited Listing</button>
