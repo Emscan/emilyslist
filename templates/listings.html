@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-<h1>Listings</h1>
+<h2>Listings</h2>
 	{% for listing in listings %}
 		{% if listing.images %}
 			<img src="/uploads/{{listing.images[0].filename}}" height="100" width="100">

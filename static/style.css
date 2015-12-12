@@ -3,7 +3,7 @@ html, body, .container-fluid, #left-panel> div {
 }
 
 body {
-	background-image: url("/static/a025.jpg");
+	background-image: url("/static/jellyfish.jpg");
 	background-repeat: no-repeat; 
 	background-position: center;
 	background-size: cover; 
@@ -34,5 +34,14 @@ h1 {
 }
 
 #flash {
-	color: red;
+	color: maroon;
+	font-size: 20px;
+}
+
+a#category {
+	color: white;
+}
+
+div#inner-text a {
+	color: white;
 }

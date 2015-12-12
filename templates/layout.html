@@ -12,7 +12,7 @@
 			<h1><a href="#">Emily's List</a></h1>
 			{% with messages = get_flashed_messages() %}
 			{% for message in messages %}
-				<p id="flash" color="red">{{message}}</p>
+				<p id="flash">{{message}}</p>
 			{% endfor %}
 			<p><form action="/search" method="GET">
 					<div class="input-group center-block" style="text-align: center">

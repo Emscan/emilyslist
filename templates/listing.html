@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
-	<h1>{{post.title}} -- ${{post.price}}</h1>
+	<h2>{{listing.title}} -- ${{listing.price}}</h2>
 	<h4>Reply email: {{listing.email}}</h4>
-		<p>{{post.body}}</p>
+		<p>{{listing.body}}</p>
 			{% for image in images %}
 			<img src="{{config['S3_BUCKET_LINK']}}{{image.filename}}">
 			{% endfor %}
+			<div class="images">
 {% endblock %}
