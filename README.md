@@ -8,4 +8,4 @@ A Craigslist clone application
 1. create a virtual environment
 1. $ pip install -r requirements.txt
 
-URL: 
+URL: http://emilyslistirl-env.elasticbeanstalk.com/
