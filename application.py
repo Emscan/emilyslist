@@ -5,6 +5,10 @@ from blueprints import *
 application = Flask(__name__, static_url_path='/static')
 application.config.from_object('config')
 
+@application.teardown_appcontext
+def shutdown_session(exception=None):
+	db.session.remove()
+
 @application.route('/')
 def home():
 	categories = Category.query.all()
